@@ -4,6 +4,10 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     # install general dependencies
     sudo apt-get install -y --no-install-recommends bzip2 libbz2-dev libcurl4-openssl-dev liblzma-dev g++ gcc make python3 zlib1g-dev && \
 
+    # set up home environment
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> ~/.bashrc && \
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib && \
+
     # install htslib
     wget -qO- "https://github.com/samtools/htslib/releases/download/1.20/htslib-1.20.tar.bz2" | tar -xj && \
     cd htslib-* && \
