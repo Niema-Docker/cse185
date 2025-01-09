@@ -2,7 +2,7 @@ FROM codercom/code-server:latest
 MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
 RUN sudo apt-get update && sudo apt-get upgrade -y && \
     # install general dependencies
-    sudo apt-get install -y --no-install-recommends bzip2 libbz2-dev libcurl4-openssl-dev liblzma-dev g++ gcc make python3 zlib1g-dev && \
+    sudo apt-get install -y --no-install-recommends bzip2 cmake libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev liblzma-dev g++ gcc make python3 zlib1g-dev && \
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib && \
 
     # install htslib
@@ -35,6 +35,11 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     gcc -DUSE_DOUBLE -DOPENMP -fopenmp -O3 -finline-functions -funroll-loops -Wall -o FastTree FastTree.c -lm && \
     sudo mv FastTree /usr/local/bin && \
     rm FastTree.c && \
+
+    # install IQ-TREE 2
+    wget -qO- "https://github.com/iqtree/iqtree2/releases/download/v2.3.6/iqtree-2.3.6-Linux-intel.tar.gz" | tar -zx && \
+    sudo mv iqtree-*/bin/iqtree2 /usr/local/bin/iqtree2 && \
+    rm -rf iqtree-* && \
 
     # install MAFFT
     wget -qO- "https://mafft.cbrc.jp/alignment/software/mafft-7.525-without-extensions-src.tgz" | tar -zx && \
