@@ -29,6 +29,12 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     cd .. && \
     rm -rf bwa-* && \
 
+    # install FastTree
+    wget "http://www.microbesonline.org/fasttree/FastTree.c" && \
+    gcc -DUSE_DOUBLE -DOPENMP -fopenmp -O3 -finline-functions -funroll-loops -Wall -o FastTree FastTree.c -lm && \
+    sudo mv FastTree /usr/local/bin && \
+    rm FastTree.c && \
+
     # install Minimap2
     wget -qO- "https://github.com/lh3/minimap2/archive/refs/tags/v2.28.tar.gz" | tar -zx && \
     cd minimap2-* && \
