@@ -53,6 +53,18 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     cd .. && \
     rm -rf minimap2-* && \
 
+    # install ViralConsensus
+    wget -qO- "https://github.com/niemasd/ViralConsensus/archive/refs/tags/0.0.6.tar.gz" | tar -zx && \
+    cd ViralConsensus-* && \
+    make && \
+    sudo mv viral_consensus /usr/local/bin/viral_consensus && \
+    cd .. && \
+    rm -rf ViralConsensus-* && \
+
+    # install ViralMSA
+    sudo wget -O /usr/local/bin/ViralMSA.py "https://github.com/niemasd/ViralMSA/releases/download/1.1.44/ViralMSA.py" && \
+    sudo chmod a+x /usr/local/bin/ViralMSA.py && \
+
     # clean up
     sudo apt-get autoremove -y && \
     sudo apt-get purge -y --auto-remove && \
