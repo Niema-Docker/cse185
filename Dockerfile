@@ -9,7 +9,7 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     cd htslib-* && \
     ./configure && \
     make && \
-    make install && \
+    sudo make install && \
     cd .. && \
     rm -rf htslib-* && \
 
