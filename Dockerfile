@@ -63,6 +63,12 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     sudo mv newick-utils-*/src/nw_* /usr/local/bin/ && \
     rm -rf newick-utils-* && \
 
+    # install SPAdes
+    wget -qO- "https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0-Linux.tar.gz" | tar -zx && \
+    sudo mv SPAdes-*/bin/* /usr/local/bin/ && \
+    sudo mv SPAdes-*/share/* /usr/local/share/ && \
+    rm -rf SPAdes-* && \
+
     # install ViralConsensus
     wget -qO- "https://github.com/niemasd/ViralConsensus/archive/refs/tags/0.0.6.tar.gz" | tar -zx && \
     cd ViralConsensus-* && \
