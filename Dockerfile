@@ -54,12 +54,8 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     rm -rf mafft-* && \
 
     # install Minimap2
-    wget -qO- "https://github.com/lh3/minimap2/archive/refs/tags/v2.28.tar.gz" | tar -zx && \
-    cd minimap2-* && \
-    make && \
-    chmod a+x minimap2 && \
-    sudo mv minimap2 /usr/local/bin/minimap2 && \
-    cd .. && \
+    wget -qO- "https://github.com/lh3/minimap2/releases/download/v2.28/minimap2-2.28_x64-linux.tar.bz2" | tar -xj && \
+    sudo mv minimap2-*/minimap2 /usr/local/bin/minimap2 && \
     rm -rf minimap2-* && \
 
     # install newick_utils
