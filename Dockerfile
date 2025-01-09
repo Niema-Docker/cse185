@@ -13,7 +13,15 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     cd .. && \
     rm -rf htslib-* && \
 
-    # install Minimap2
+    # install bowtie2
+    wget -qO- "https://github.com/BenLangmead/bowtie2/archive/refs/tags/v2.5.4.tar.gz" | tar -zx && \
+    cd bowtie2-* && \
+    make && \
+    sudo make install && \
+    cd .. && \
+    rm -rf bowtie2-* && \
+
+    # install minimap2
     wget -qO- "https://github.com/lh3/minimap2/archive/refs/tags/v2.28.tar.gz" | tar -zx && \
     cd minimap2-* && \
     make && \
