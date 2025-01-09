@@ -35,6 +35,15 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     sudo mv FastTree /usr/local/bin && \
     rm FastTree.c && \
 
+    # install MAFFT
+    wget -qO- "https://mafft.cbrc.jp/alignment/software/mafft-7.525-without-extensions-src.tgz" | tar -zx && \
+    cd mafft-*/core && \
+    make clean && \
+    make && \
+    sudo make install && \
+    cd ../.. && \
+    rm -rf mafft-* && \
+
     # install Minimap2
     wget -qO- "https://github.com/lh3/minimap2/archive/refs/tags/v2.28.tar.gz" | tar -zx && \
     cd minimap2-* && \
