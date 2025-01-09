@@ -3,9 +3,6 @@ MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
 RUN sudo apt-get update && sudo apt-get upgrade -y && \
     # install general dependencies
     sudo apt-get install -y --no-install-recommends bzip2 libbz2-dev libcurl4-openssl-dev liblzma-dev g++ gcc make python3 zlib1g-dev && \
-
-    # set up home environment
-    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> ~/.bashrc && \
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib && \
 
     # install htslib
@@ -73,3 +70,4 @@ RUN sudo apt-get update && sudo apt-get upgrade -y && \
     sudo apt-get autoremove -y && \
     sudo apt-get purge -y --auto-remove && \
     sudo rm -rf /var/lib/apt/lists/*
+ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
