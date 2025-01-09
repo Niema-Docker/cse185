@@ -1,6 +1,6 @@
 FROM codercom/code-server:latest
 MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
-RUN sudo apt-get update && sudo apt-get upgrade -y \
+RUN sudo apt-get update && sudo apt-get upgrade -y && \
     # install general dependencies
     sudo apt-get install -y --no-install-recommends g++ gcc make python3 zlib1g-dev && \
 
@@ -9,7 +9,7 @@ RUN sudo apt-get update && sudo apt-get upgrade -y \
     cd minimap2-* && \
     make && \
     chmod a+x minimap2 && \
-    mv minimap2 /usr/local/bin/minimap2 && \
+    sudo mv minimap2 /usr/local/bin/minimap2 && \
     cd .. && \
     rm -rf minimap2-* && \
 
